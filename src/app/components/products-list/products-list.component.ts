@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { IProduct } from 'src/app/models/product.interface';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products-list',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsListComponent implements OnInit {
 
-  constructor() { }
+  productsList!: IProduct[];
+  productsSubscription!: Subscription
+
+  constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
+    this.productsSubscription = this.productService.getProducts().subscribe((data: any) => {
+      this.productsList = data;
+      console.log('productList', this.productsList);
+    });
+  };
+
+  ngOnDestroy() {
+    if (this.productsSubscription) this.productsSubscription.unsubscribe();
   }
+
 
 }
