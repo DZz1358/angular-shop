@@ -1,16 +1,19 @@
 <div class="d-flex justify-content-center flex-wrap">
   <mat-card class="example-card mx-2 mt-3" *ngFor="let product of productsList">
-    <mat-card-header>
-      <!-- <mat-card-title class="">{{ product.title }}</mat-card-title> -->
-    </mat-card-header>
-    <img mat-card-image src="{{ product.image }}" alt="Photo" />
+    <mat-card-header></mat-card-header>
+    <img
+      mat-card-image
+      src="{{ product.image }}"
+      alt="Photo"
+      class="card-img"
+    />
     <mat-card-content>
       <p>{{ product.price | currency }}</p>
       <p>{{ product.title }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
+        <button mat-button [routerLink]="['/product', product.id]">Details</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
   </mat-card>
 </div>

@@ -1,8 +1,15 @@
 .example-card {
-  max-width: 200px;
+  max-width: 220px;
+  min-width: 220px;
 }
 
-mat-card-header{
+mat-card-header {
   height: 5px;
+}
 
+.card-img {
+  max-height: 220px;
+  min-height: 220px;
+  object-fit: contain;
+  background-color: white;
 }

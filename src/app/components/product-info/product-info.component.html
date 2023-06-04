@@ -1,1 +1,24 @@
-<p>product-info works!</p>
+
+<div class="d-flex mt-3">
+  <div class="col-5">
+    <img
+      mat-card-image
+      src="{{ product.data.image }}"
+      alt="Photo"
+      class="card-img"
+    />
+  </div>
+  <div class="col-6">
+      <h1>{{ product.data.title | uppercase}}</h1>
+      <h2>{{ product.data.description }}</h2>
+
+      <p>{{ product.data.price | currency }}</p>
+      <p><b>Count: </b>{{ product.data.rating.count }}</p>
+      <p><b>Rate: </b>{{ product.data.rating.rate }}</p>
+      <div>
+        <button mat-raised-button>Basic</button>
+        <button mat-raised-button color="warn">Basic</button>
+
+      </div>
+  </div>
+</div>

@@ -8,15 +8,15 @@ export class ProductsService {
 
   private apiUrl: string = 'https://fakestoreapi.com/products'
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-getProducts(){
-  return this.http.get(`${this.apiUrl}`)
-}
+  getProducts() {
+    return this.http.get(`${this.apiUrl}`)
+  }
 
-getProduct(id: number){
-  return this.http.get(`${this.apiUrl}/${id}`)
-}
+  getProduct(id: number) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 
 }
