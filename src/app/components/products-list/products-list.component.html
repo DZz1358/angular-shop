@@ -12,8 +12,10 @@
       <p>{{ product.title }}</p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button [routerLink]="['/product', product.id]">Details</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
+      <button mat-button [routerLink]="['/product', product.id]">
+        Details
+      </button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
   </mat-card>
 </div>

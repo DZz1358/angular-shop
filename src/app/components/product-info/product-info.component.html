@@ -1,24 +1,26 @@
-
-<div class="d-flex mt-3">
-  <div class="col-5">
+<div class="d-flex mt-5 justify-content-center">
+  <div class="col-3">
     <img
       mat-card-image
       src="{{ product.data.image }}"
       alt="Photo"
-      class="card-img"
+      class="card-img px-2"
     />
   </div>
-  <div class="col-6">
-      <h1>{{ product.data.title | uppercase}}</h1>
-      <h2>{{ product.data.description }}</h2>
+  <div class="col-5 px-3">
+    <h1 class="fw-bold">{{ product.data.title | uppercase }}</h1>
+    <hr>
+    <h3>{{ product.data.description }}</h3>
+    <hr>
+    <p><b>Price: </b>{{ product.data.price | currency }}</p>
 
-      <p>{{ product.data.price | currency }}</p>
-      <p><b>Count: </b>{{ product.data.rating.count }}</p>
-      <p><b>Rate: </b>{{ product.data.rating.rate }}</p>
-      <div>
-        <button mat-raised-button>Basic</button>
-        <button mat-raised-button color="warn">Basic</button>
-
-      </div>
+    <div class="d-flex">
+      <p ><b>Count: </b>{{ product.data.rating.count }}</p>
+      <p class="mx-2"><b>Rate: </b>{{ product.data.rating.rate }}</p>
+    </div>
+    <div class="col-12">
+      <button mat-raised-button class="col-3">Basic</button>
+      <button mat-raised-button color="warn" class="col-3 mx-3">Basic</button>
+    </div>
   </div>
 </div>
