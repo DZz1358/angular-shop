@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from './shared/shared.module';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -17,6 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { MainComponent } from './components/main/main.component';
+import { ProductsResolver } from './services/products.resolver';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { MainComponent } from './components/main/main.component';
     MatCardModule,
     SharedModule
   ],
-  providers: [],
+  providers: [ProductsResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

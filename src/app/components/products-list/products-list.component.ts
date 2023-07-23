@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsListComponent implements OnInit {
 
   productsList!: IProduct[];
-  productsSubscription!: Subscription
+  productsSubscription!: Subscription;
 
   constructor(
     private productService: ProductsService,

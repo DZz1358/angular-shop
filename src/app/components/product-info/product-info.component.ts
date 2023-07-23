@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { IProduct } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-product-info',
@@ -8,16 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductInfoComponent implements OnInit {
 
-  product!: any;
+  product!: IProduct;
+  productSubscription!: Subscription;
 
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.data.subscribe((data) => {
-      this.product = data;
+    this.productSubscription = this.route.data.subscribe((data) => {
+      this.product = data['data'];
       console.log('data', data);
     })
+
   }
+
 
 }
