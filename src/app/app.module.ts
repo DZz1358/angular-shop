@@ -18,6 +18,10 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { MainComponent } from './components/main/main.component';
 import { ProductsResolver } from './services/products.resolver';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddProductModalComponent } from './components/add-product-modal/add-product-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -28,6 +32,7 @@ import { ProductsResolver } from './services/products.resolver';
     ProductsListComponent,
     ProductInfoComponent,
     MainComponent,
+    AddProductModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,11 @@ import { ProductsResolver } from './services/products.resolver';
     MatButtonModule,
     HttpClientModule,
     MatCardModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [ProductsResolver],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/models/product.interface';
@@ -8,7 +8,7 @@ import { IProduct } from 'src/app/models/product.interface';
   templateUrl: './product-info.component.html',
   styleUrls: ['./product-info.component.scss']
 })
-export class ProductInfoComponent implements OnInit {
+export class ProductInfoComponent implements OnInit, OnDestroy {
 
   product!: IProduct;
   productSubscription!: Subscription;
@@ -22,6 +22,13 @@ export class ProductInfoComponent implements OnInit {
       console.log('data', data);
     })
 
+  }
+
+
+
+
+  ngOnDestroy(): void {
+    if (this.productSubscription) this.productSubscription.unsubscribe();
   }
 
 

@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex flex-column">
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="title"
+      placeholder="Enter title"
+    />
+    <mat-error>
+      Please enter a valid email address
+    </mat-error>
+    <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Price</mat-label>
+    <input
+      type="number"
+      matInput
+      formControlName="price"
+      placeholder="Enter price"
+    />
+    <mat-error>
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="description"
+      placeholder="Enter description"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Category</mat-label>
+    <input
+      matInput
+      formControlName="category"
+      placeholder="Choose category"
+    />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    <mat-icon>groups</mat-icon>
+    <span>Add product</span>
+  </button>
+</form>
