@@ -20,4 +20,8 @@ export class ProductsService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
+  addProduct(data: IProduct) {
+    return this.http.post(`${this.apiUrl}`, data);
+  }
+
 }

@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddProductModalComponent } from './components/add-product-modal/add-product-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [ProductsResolver],
   bootstrap: [AppComponent]
