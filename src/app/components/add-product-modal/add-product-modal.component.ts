@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AddProductService } from 'src/app/services/add-product.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -9,11 +10,11 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./add-product-modal.component.scss']
 })
 export class AddProductModalComponent implements OnInit {
+
   public form: FormGroup = new FormGroup({
     title: new FormControl(''),
     price: new FormControl(''),
     description: new FormControl(''),
-    image: new FormControl(''),
     category: new FormControl(''),
   })
 
@@ -39,21 +40,23 @@ export class AddProductModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddProductModalComponent>,
     private productService: ProductsService,
+    private addProductService: AddProductService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
-  onClose(): void {
-    this.dialogRef.close();
-  }
 
   ngOnInit(): void {
-
   }
 
   public onSubmit(form: any) {
-    this.productService.addProduct(form.value).subscribe(
+    const data = {
+      ...form.value,
+      image: 'assets/images/кіт.jpg'
+    }
+    this.productService.addProduct(data).subscribe(
       (response) => {
         console.log('Product added successfully:', response);
+        this.addProductService.setData(response)
         this.onClose();
       },
       (error) => {
@@ -61,5 +64,10 @@ export class AddProductModalComponent implements OnInit {
       }
     );
   }
+
+  onClose(): void {
+    this.dialogRef.close(this.form.value);
+  }
+
 
 }

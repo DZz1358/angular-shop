@@ -23,6 +23,8 @@ import { AddProductModalComponent } from './components/add-product-modal/add-pro
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { AddProductService } from './services/add-product.service';
+import { ProductsService } from './services/products.service';
 
 
 @NgModule({
@@ -51,7 +53,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatSelectModule
   ],
-  providers: [ProductsResolver],
+  providers: [ProductsResolver, AddProductService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
