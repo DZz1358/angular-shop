@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from './shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -48,7 +49,8 @@ import { ProductsService } from './services/products.service';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [ProductsResolver, ProductsService],
   bootstrap: [AppComponent]

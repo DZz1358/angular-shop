@@ -3,14 +3,41 @@
     <mat-icon class="mx-2">favorite</mat-icon>
     <span>My App</span>
   </div>
-  <div class="d-flex">
+  <div class="d-none d-sm-flex">
     <button mat-button color="primary" routerLink="/products">
       <mat-icon class="mx-1">menu</mat-icon>
       <span>Products</span>
     </button>
-    <button mat-button color="primary" routerLink="/about-us">
+    <button mat-button color="primary" routerLink="/cart">
       <mat-icon class="mx-1">shopping_cart_checkout</mat-icon>
       <span>Cart</span>
     </button>
+    <button mat-button color="primary" routerLink="/about-us">
+      <mat-icon class="mx-1">group</mat-icon>
+      <span>About us</span>
+    </button>
+  </div>
+
+  <div class="d-flex d-sm-none">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon class="mx-1">menu</mat-icon>
+    </button>
+    <mat-menu  #menu="matMenu">
+      <div class="d-flex flex-column justify-content-start">
+        <button class="d-flex" mat-button color="primary" routerLink="/products">
+          <mat-icon class="mx-1">menu</mat-icon>
+          <span>Products</span>
+        </button>
+        <button class="d-flex" mat-button color="primary" routerLink="/cart">
+          <mat-icon class="mx-1">shopping_cart_checkout</mat-icon>
+          <span>Cart</span>
+        </button>
+        <button class="d-flex" mat-button color="primary" routerLink="/about-us">
+          <mat-icon class="mx-1">group</mat-icon>
+          <span>About us</span>
+        </button>
+
+      </div>
+      </mat-menu>
   </div>
 </mat-toolbar>
