@@ -1,8 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/models/product.interface';
-import { AddProductService } from 'src/app/services/add-product.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -18,18 +16,13 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private addProductService: AddProductService,
   ) { }
 
 
   ngOnInit(): void {
-    this.addProductService.getData().subscribe((data) => {
-      this.newProduct = data;
-      this.productsList.push(this.newProduct)
-    });
-
     this.productsSubscription = this.productService.getProducts().subscribe((data: any) => {
       this.productsList = data;
+      console.log('this.productsList4', this.productsList)
     });
   };
 

@@ -1,6 +1,29 @@
-.example-card {
-  max-width: 220px;
-  min-width: 220px;
+.products-wrapper {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 20px 10px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (min-width: 425px) and (max-width: 725px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 726px) and (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1025px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.product-card {
+  width: 100%;
+  max-width: 320px;
 }
 
 mat-card-header {

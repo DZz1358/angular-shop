@@ -19,11 +19,9 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { MainComponent } from './components/main/main.component';
 import { ProductsResolver } from './services/products.resolver';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddProductModalComponent } from './components/add-product-modal/add-product-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { AddProductService } from './services/add-product.service';
 import { ProductsService } from './services/products.service';
 
 
@@ -35,7 +33,6 @@ import { ProductsService } from './services/products.service';
     ProductsListComponent,
     ProductInfoComponent,
     MainComponent,
-    AddProductModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +50,7 @@ import { ProductsService } from './services/products.service';
     MatInputModule,
     MatSelectModule
   ],
-  providers: [ProductsResolver, AddProductService, ProductsService],
+  providers: [ProductsResolver, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
