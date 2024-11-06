@@ -1,5 +1,18 @@
+
+<form class="product-filter" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Select</mat-label>
+    <mat-select  formControlName="category">
+      <mat-option *ngFor="let category of categoryType"
+      [value]="category.name">
+        {{category.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
 <div class="products-wrapper">
-  <mat-card class="product-card" *ngFor="let product of productsList">
+  <mat-card class="product-card" *ngFor="let product of filteredProducts">
     <mat-card-header></mat-card-header>
     <img
       mat-card-image
@@ -8,14 +21,14 @@
       class="card-img"
     />
     <mat-card-content>
-      <p>{{ product.price | currency }}</p>
       <p>{{ product.title }}</p>
+      <p>{{ product.price | currency }}</p>
+
     </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/product', product.id]">
         Details
       </button>
-      <button mat-button>SHARE</button>
     </mat-card-actions>
   </mat-card>
 </div>
