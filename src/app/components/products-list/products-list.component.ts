@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, UntypedFormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { categoryType } from 'src/app/constants/category-product-type.constants';
 import { IProduct } from 'src/app/models/product.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -10,33 +11,9 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  public categoryType = [
-    {
-      id: 0,
-      label: 'All',
-      name: "All"
-    },
-    {
-      id: 1,
-      label: 'Electronics',
-      name: "electronics"
-    },
-    {
-      id: 2,
-      label: 'Jewelery',
-      name: "jewelery"
-    },
-    {
-      id: 3,
-      label: "Men's clothing",
-      name: "women's clothing"
-    },
-    {
-      id: 4,
-      label: "Women's clothing",
-      name: "women's clothing"
-    },
-  ];
+
+  public value = 'Clear me';
+  public categoryType = categoryType;
 
   productsList!: IProduct[];
   productsSubscription!: Subscription;
@@ -44,11 +21,17 @@ export class ProductsListComponent implements OnInit {
 
   public form = this.fb.group({
     category: [this.categoryType[0].name],
+    search: ['']
   });
 
-  get categoryFC() {
-    return this.form.get('category')?.value;
+  get categoryFC(): UntypedFormControl {
+    return this.form.get('category') as UntypedFormControl;
   }
+
+  get searchFC(): UntypedFormControl {
+    return this.form.get('search') as UntypedFormControl;
+  }
+
 
   constructor(
     private productService: ProductsService,
@@ -59,21 +42,33 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.productsSubscription = this.productService.getProducts().subscribe((data: IProduct[]) => {
       this.productsList = data;
-      this.applyFilter(String(this.categoryFC));
+      this.categoryFilter(this.categoryFC.value);
     });
 
-    this.form.valueChanges.subscribe(() => {
-      this.applyFilter(String(this.categoryFC));
+    this.categoryFC.valueChanges.subscribe((data) => {
+      this.categoryFilter(this.categoryFC.value);
+    });
+
+    this.searchFC.valueChanges.subscribe((data) => {
+      this.searchFilter(data)
     });
 
   }
 
-  applyFilter(categoryName: string): void {
+  searchFilter(value: string) {
+    this.filteredProducts = this.productsList.filter(item => item.title.toLowerCase().includes(value.toLowerCase()))
+  }
+
+  categoryFilter(categoryName: string): void {
     if (categoryName === 'All') {
       this.filteredProducts = this.productsList;
     } else {
       this.filteredProducts = this.productsList.filter(item => item.category === categoryName);
     }
+  }
+
+  clearInput() {
+    this.searchFC.patchValue('')
   }
 
   ngOnDestroy() {
