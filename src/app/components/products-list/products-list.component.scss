@@ -30,6 +30,16 @@ mat-card-header {
   height: 5px;
 }
 
+::ng-deep mat-form-field div.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+// mat-form-field {
+//   width: 100%;
+//   max-width: 320px;
+
+// }
+
 .card-img {
   max-height: 220px;
   min-height: 220px;
@@ -38,5 +48,7 @@ mat-card-header {
 }
 
 .product-filter {
-  background-color: brown;
+  background-color: #3d3a3a;
+  padding: 10px 0;
+  color: #c2185b;
 }

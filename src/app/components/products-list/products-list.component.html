@@ -1,6 +1,6 @@
 
 <form class="product-filter" [formGroup]="form">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="px-2 col-12 col-lg-3 col-sm-6">
     <mat-label>Select</mat-label>
     <mat-select  formControlName="category">
       <mat-option *ngFor="let category of categoryType"
@@ -10,7 +10,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="px-2 col-12 col-lg-3 col-sm-6">
     <mat-label>Search</mat-label>
     <input matInput type="text" formControlName="search">
     <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
