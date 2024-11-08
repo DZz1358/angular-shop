@@ -17,7 +17,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
-import { MainComponent } from './components/main/main.component';
 import { ProductsResolver } from './services/products.resolver';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import { ProductsService } from './services/products.service';
     FooterComponent,
     ProductsListComponent,
     ProductInfoComponent,
-    MainComponent,
   ],
   imports: [
     BrowserModule,
