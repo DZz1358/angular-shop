@@ -106,6 +106,11 @@ export class ProductsListComponent implements OnInit {
   }
 
 
+  clearCart() {
+    this.cartService.clearCurrentCart()
+  }
+
+
 
   ngOnDestroy() {
     if (this.productsSubscription) this.productsSubscription.unsubscribe();

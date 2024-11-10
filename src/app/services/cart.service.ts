@@ -11,6 +11,7 @@ export class CartService {
 
   constructor() {
     this.loadCartFromLocalStorage();
+    this.checkCartTime();
   }
 
   private loadCartFromLocalStorage() {
@@ -69,6 +70,30 @@ export class CartService {
 
     this.storageCartsSubject.next(currentCart);
     this.saveCartToLocalStorage(currentCart);
+  }
+
+
+  checkCartTime() {
+    const currentCart = this.storageCartsSubject.value;
+
+    if (currentCart) {
+      const currentTime = new Date().getTime();
+      const cartTime = new Date(currentCart[0].updatedAt).getTime();
+      const timeDifference = currentTime - cartTime;
+
+      if (timeDifference > 1440 * 60 * 1000) {
+        this.clearCurrentCart();
+      }
+    }
+  }
+
+  clearCurrentCart() {
+    const currentCart = this.storageCartsSubject.value;
+    if (currentCart) {
+      currentCart.splice(currentCart[0], 1);
+      this.saveCartToLocalStorage(currentCart);
+      this.storageCartsSubject.next(currentCart);
+    }
   }
 
 
