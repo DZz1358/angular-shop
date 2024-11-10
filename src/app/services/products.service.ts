@@ -6,7 +6,6 @@ import { IProduct } from '../models/product.interface';
   providedIn: 'root'
 })
 export class ProductsService {
-
   private apiUrl: string = 'https://fakestoreapi.com/products'
 
   constructor(private http: HttpClient) { }

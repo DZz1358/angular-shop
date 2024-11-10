@@ -24,6 +24,9 @@
 .product-card {
   width: 100%;
   max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 mat-card-header {
@@ -34,11 +37,6 @@ mat-card-header {
   padding-bottom: 0 !important;
 }
 
-// mat-form-field {
-//   width: 100%;
-//   max-width: 320px;
-
-// }
 
 .card-img {
   max-height: 220px;
@@ -51,4 +49,28 @@ mat-card-header {
   background-color: #3d3a3a;
   padding: 10px 0;
   color: #c2185b;
+}
+
+.btn {
+  color: #b4728d;
+  background-color: #292828;
+  cursor: pointer;
+
+  &:disabled {
+    color: #fc0069;
+    background-color: #fffdfd;
+  }
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-counter {
+    background-color: transparent;
+    border-radius: 8px;
+    border: 1px solid #b4728d;
+    padding: 5px 25px;
+  }
 }

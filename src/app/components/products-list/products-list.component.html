@@ -21,22 +21,38 @@
 
 <div class="products-wrapper">
   <mat-card class="product-card" *ngFor="let product of filteredProducts">
-    <mat-card-header></mat-card-header>
-    <img
-      mat-card-image
-      src="{{ product.image }}"
-      alt="Photo"
-      class="card-img"
-    />
-    <mat-card-content>
-      <p>{{ product.title }}</p>
-      <p>{{ product.price | currency }}</p>
+    <div>
+      <mat-card-header></mat-card-header>
+      <img
+        mat-card-image
+        src="{{ product.image }}"
+        alt="Photo"
+        class="card-img"
+      />
+      <mat-card-content>
+        <p>{{ product.title }}</p>
+        <p>{{ product.price | currency }}</p>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button [routerLink]="['/product', product.id]">
+      </mat-card-content>
+    </div>
+
+    <div>
+      <button mat-stroked-button [routerLink]="['/product', product.id]">
         Details
       </button>
-    </mat-card-actions>
+
+      <div class="btn-wrapper">
+        <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
+          <span>-</span>
+        </button>
+        <span class="btn-wrapper-counter">{{ initCount(product) }}</span>
+
+        <button mat-stroked-button class="btn" (click)="increment(product)">
+          <span>+</span>
+        </button>
+      </div>
+
+    </div>
+
   </mat-card>
 </div>

@@ -1,8 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, UntypedFormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { categoryType } from 'src/app/constants/category-product-type.constants';
 import { IProduct } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -14,6 +15,10 @@ export class ProductsListComponent implements OnInit {
 
   public value = 'Clear me';
   public categoryType = categoryType;
+  cart$!: Observable<any[]>;
+  public cart: any[] = []
+
+
 
   productsList!: IProduct[];
   productsSubscription!: Subscription;
@@ -35,14 +40,18 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
+    private cartService: CartService,
     private fb: FormBuilder
   ) { }
 
 
   ngOnInit(): void {
+    this.loadCart();
+
     this.productsSubscription = this.productService.getProducts().subscribe((data: IProduct[]) => {
       this.productsList = data;
       this.categoryFilter(this.categoryFC.value);
+      console.log('this.productsList', this.productsList)
     });
 
     this.categoryFC.valueChanges.subscribe((data) => {
@@ -53,7 +62,18 @@ export class ProductsListComponent implements OnInit {
       this.searchFilter(data)
     });
 
+
   }
+
+
+  private loadCart() {
+    this.cart$ = this.cartService.getCart();
+    this.cart$.subscribe((cart) => {
+      console.log('cart', cart)
+      this.cart = cart[0]?.products
+    })
+  }
+
 
   searchFilter(value: string) {
     this.filteredProducts = this.productsList.filter(item => item.title.toLowerCase().includes(value.toLowerCase()))
@@ -70,6 +90,22 @@ export class ProductsListComponent implements OnInit {
   clearInput() {
     this.searchFC.patchValue('')
   }
+
+  initCount(product: any) {
+    const match = this.cart?.find((item: any) => item.id === product.id)
+    return match ? match.count : 0;
+  }
+
+
+  increment(product: any) {
+    this.cartService.addToCart(product)
+  }
+
+  decrement(productId: number) {
+    this.cartService.removeFromCart(productId)
+  }
+
+
 
   ngOnDestroy() {
     if (this.productsSubscription) this.productsSubscription.unsubscribe();
