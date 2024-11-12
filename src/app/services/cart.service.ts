@@ -88,9 +88,9 @@ export class CartService {
   }
 
   clearCurrentCart() {
-    const currentCart = this.storageCartsSubject.value;
+    let currentCart = this.storageCartsSubject.value;
     if (currentCart) {
-      currentCart.splice(currentCart, 1);
+      currentCart = {};
       this.saveCartToLocalStorage(currentCart);
       this.storageCartsSubject.next(currentCart);
     }
