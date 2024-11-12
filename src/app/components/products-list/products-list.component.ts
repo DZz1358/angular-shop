@@ -15,10 +15,8 @@ export class ProductsListComponent implements OnInit {
 
   public value = 'Clear me';
   public categoryType = categoryType;
-  cart$!: Observable<any[]>;
-  public cart: any[] = []
-
-
+  cart$!: Observable<any>;
+  public cart: any = {}
 
   productsList!: IProduct[];
   productsSubscription!: Subscription;
@@ -70,7 +68,7 @@ export class ProductsListComponent implements OnInit {
     this.cart$ = this.cartService.getCart();
     this.cart$.subscribe((cart) => {
       console.log('cart', cart)
-      this.cart = cart[0]?.products
+      this.cart = cart.products
     })
   }
 

@@ -6,7 +6,7 @@ import { BehaviorSubject, count } from 'rxjs';
 })
 export class CartService {
 
-  public storageCartsSubject = new BehaviorSubject<any[]>([]);
+  public storageCartsSubject = new BehaviorSubject<any>({});
 
 
   constructor() {
@@ -31,16 +31,16 @@ export class CartService {
   }
 
   addToCart(item: any) {
-    const currentCart = this.storageCartsSubject.value;
+    let currentCart = this.storageCartsSubject.value;
 
     if (currentCart.length === 0) {
-      currentCart.push({
+      currentCart = {
         products: [],
         updatedAt: new Date().toISOString(),
-      });
+      };
     }
 
-    const products = currentCart[0].products;
+    const products = currentCart.products;
     const existingProduct = products.find((product: any) => product.id === item.id);
 
     if (existingProduct) {
@@ -56,7 +56,7 @@ export class CartService {
 
   removeFromCart(productId: number) {
     const currentCart = this.storageCartsSubject.value;
-    const products = currentCart[0]?.products;
+    const products = currentCart.products;
 
     const productIndex = products.findIndex((product: any) => product.id === productId);
 
@@ -78,7 +78,7 @@ export class CartService {
 
     if (currentCart) {
       const currentTime = new Date().getTime();
-      const cartTime = new Date(currentCart[0].updatedAt).getTime();
+      const cartTime = new Date(currentCart.updatedAt).getTime();
       const timeDifference = currentTime - cartTime;
 
       if (timeDifference > 1440 * 60 * 1000) {
@@ -90,7 +90,7 @@ export class CartService {
   clearCurrentCart() {
     const currentCart = this.storageCartsSubject.value;
     if (currentCart) {
-      currentCart.splice(currentCart[0], 1);
+      currentCart.splice(currentCart, 1);
       this.saveCartToLocalStorage(currentCart);
       this.storageCartsSubject.next(currentCart);
     }
