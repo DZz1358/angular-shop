@@ -22,7 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatBadgeModule } from '@angular/material/badge';
 import { ProductsService } from './services/products.service';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { ProductsService } from './services/products.service';
     FooterComponent,
     ProductsListComponent,
     ProductInfoComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { ProductsService } from './services/products.service';
     FormsModule,
     MatInputModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBadgeModule
   ],
   providers: [ProductsResolver, ProductsService],
   bootstrap: [AppComponent]

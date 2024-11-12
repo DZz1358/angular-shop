@@ -1,0 +1,17 @@
+<div class="cart-wrapper">
+  <mat-card class="product-card" *ngFor="let product of cartProducts">
+    <div>
+      <img
+        mat-card-image
+        src="{{ product.image }}"
+        alt="Photo"
+        class="card-img"
+      />
+    </div>
+    <div>
+      <p>{{ product.title }}</p>
+      <p>{{ product.price | currency }}</p>
+
+    </div>
+  </mat-card>
+</div>

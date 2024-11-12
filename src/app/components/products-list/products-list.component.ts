@@ -49,7 +49,6 @@ export class ProductsListComponent implements OnInit {
     this.productsSubscription = this.productService.getProducts().subscribe((data: IProduct[]) => {
       this.productsList = data;
       this.categoryFilter(this.categoryFC.value);
-      console.log('this.productsList', this.productsList)
     });
 
     this.categoryFC.valueChanges.subscribe((data) => {

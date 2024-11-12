@@ -23,7 +23,7 @@ export class CartService {
   }
 
   private saveCartToLocalStorage(cart: any) {
-    localStorage.setItem('cart', JSON.stringify(this.storageCartsSubject.value));
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   public getCart() {
@@ -33,7 +33,7 @@ export class CartService {
   addToCart(item: any) {
     let currentCart = this.storageCartsSubject.value;
 
-    if (currentCart.length === 0) {
+    if (!currentCart || !currentCart.products) {
       currentCart = {
         products: [],
         updatedAt: new Date().toISOString(),
@@ -46,13 +46,17 @@ export class CartService {
     if (existingProduct) {
       existingProduct.count++;
     } else {
-      item.count = 1;
-      products.push(item);
+      products.push({
+        ...item,
+        count: 1
+      });
     }
 
+    currentCart.updatedAt = new Date().toISOString();
     this.storageCartsSubject.next(currentCart);
     this.saveCartToLocalStorage(currentCart);
   }
+
 
   removeFromCart(productId: number) {
     const currentCart = this.storageCartsSubject.value;
