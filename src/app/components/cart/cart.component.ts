@@ -30,4 +30,19 @@ export class CartComponent implements OnInit {
   }
 
 
+  initCount(product: any) {
+    const match = this.cartProducts?.find((item: any) => item.id === product.id)
+    return match ? match.count : 0;
+  }
+
+
+  increment(product: any) {
+    this.cartService.addToCart(product)
+  }
+
+  decrement(productId: number) {
+    this.cartService.removeFromCart(productId)
+  }
+
+
 }

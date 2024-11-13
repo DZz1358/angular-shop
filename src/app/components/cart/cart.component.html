@@ -1,17 +1,31 @@
 <div class="cart-wrapper">
   <mat-card class="product-card" *ngFor="let product of cartProducts">
-    <div>
+    <div class="product-card-img">
       <img
-        mat-card-image
         src="{{ product.image }}"
         alt="Photo"
         class="card-img"
       />
     </div>
-    <div>
-      <p>{{ product.title }}</p>
-      <p>{{ product.price | currency }}</p>
 
+    <div class="product-card-info">
+      <div>
+        <p>{{ product.title }}</p>
+        <p>{{ product.price | currency }}</p>
+      </div>
+
+      <div>
+        <div class="btn-wrapper">
+          <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
+            <span>-</span>
+          </button>
+          <span class="btn-wrapper-counter">{{ initCount(product) }}</span>
+
+          <button mat-stroked-button class="btn" (click)="increment(product)">
+            <span>+</span>
+          </button>
+        </div>
+      </div>
     </div>
   </mat-card>
 </div>

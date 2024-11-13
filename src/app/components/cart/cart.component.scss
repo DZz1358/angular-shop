@@ -5,11 +5,37 @@
   margin-top: 15px;
 }
 
-mat-card {
+.product-card {
   width: 100%;
-  max-width: 320px;
+  max-width: 520px;
+
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .product-card {
   display: flex;
+
+  &-img {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 100%;
+  }
+}
+
+.btn-wrapper {
+  justify-content: end;
+
+  &-counter {
+    margin: 0 15px;
+  }
 }

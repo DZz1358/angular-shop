@@ -61,16 +61,3 @@ mat-card-header {
     background-color: #fffdfd;
   }
 }
-
-.btn-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &-counter {
-    background-color: transparent;
-    border-radius: 8px;
-    border: 1px solid #b4728d;
-    padding: 5px 25px;
-  }
-}
