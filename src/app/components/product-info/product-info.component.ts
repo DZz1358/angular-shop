@@ -23,7 +23,6 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.productSubscription = this.route.data.subscribe((data) => {
       this.product = data['data'];
-      console.log('data', data);
     })
 
   }

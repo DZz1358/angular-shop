@@ -26,7 +26,6 @@ export class CartComponent implements OnInit {
   private loadCart() {
     this.cart$ = this.cartService.getCart();
     this.cart$.subscribe((cart) => {
-      console.log('cart', cart)
       this.cartProducts = cart.products
     })
   }
@@ -48,6 +47,10 @@ export class CartComponent implements OnInit {
 
   back() {
     this.location.back();
+  }
+
+  clearCart() {
+    this.cartService.clearCurrentCart()
   }
 
 

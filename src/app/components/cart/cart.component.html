@@ -1,7 +1,11 @@
 <div class="page-wrapper">
   <div class="cart-wrapper">
-    <button class="btn back-btn" mat-stroked-button (click)="back()">
+    <button class="btn action-btn back-btn" mat-stroked-button (click)="back()">
       <span>Back</span>
+    </button>
+
+    <button class="btn action-btn clear-btn" mat-stroked-button (click)="clearCart()">
+      CLEAR TEST
     </button>
 
     <ng-container *ngIf="cartProducts">
@@ -41,7 +45,7 @@
     </ng-container>
 
 
-    <div>
+    <div *ngIf="cartProducts">
       <button class="btn btn-pay-wrapper" mat-stroked-button>
         <span>Buy</span>
       </button>

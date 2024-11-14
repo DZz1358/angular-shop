@@ -66,7 +66,6 @@ export class ProductsListComponent implements OnInit {
   private loadCart() {
     this.cart$ = this.cartService.getCart();
     this.cart$.subscribe((cart) => {
-      console.log('cart', cart)
       this.cart = cart.products
     })
   }
@@ -101,13 +100,6 @@ export class ProductsListComponent implements OnInit {
   decrement(productId: number) {
     this.cartService.removeFromCart(productId)
   }
-
-
-  clearCart() {
-    this.cartService.clearCurrentCart()
-  }
-
-
 
   ngOnDestroy() {
     if (this.productsSubscription) this.productsSubscription.unsubscribe();
