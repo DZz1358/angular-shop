@@ -1,31 +1,51 @@
-<div class="cart-wrapper">
-  <mat-card class="product-card" *ngFor="let product of cartProducts">
-    <div class="product-card-img">
-      <img
-        src="{{ product.image }}"
-        alt="Photo"
-        class="card-img"
-      />
-    </div>
+<div class="page-wrapper">
+  <div class="cart-wrapper">
+    <button class="btn back-btn" mat-stroked-button (click)="back()">
+      <span>Back</span>
+    </button>
 
-    <div class="product-card-info">
-      <div>
-        <p>{{ product.title }}</p>
-        <p>{{ product.price | currency }}</p>
-      </div>
-
-      <div>
-        <div class="btn-wrapper">
-          <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
-            <span>-</span>
-          </button>
-          <span class="btn-wrapper-counter">{{ initCount(product) }}</span>
-
-          <button mat-stroked-button class="btn" (click)="increment(product)">
-            <span>+</span>
-          </button>
+    <ng-container *ngIf="cartProducts">
+        <mat-card class="product-card" *ngFor="let product of cartProducts">
+        <div class="product-card-img">
+          <img
+            src="{{ product.image }}"
+            alt="Photo"
+            class="card-img"
+          />
         </div>
-      </div>
-    </div>
-  </mat-card>
+
+        <div class="product-card-info">
+          <div>
+            <p class="link-product" [routerLink]="['/product', product.id]" >{{ product.title }}</p>
+            <p>{{ product.price | currency }}</p>
+          </div>
+
+          <div>
+            <div class="btn-wrapper">
+              <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
+                <span>-</span>
+              </button>
+              <span class="btn-wrapper-counter">{{ initCount(product) }}</span>
+
+              <button mat-stroked-button class="btn" (click)="increment(product)">
+                <span>+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </ng-container>
+
+    <ng-container *ngIf="!cartProducts">
+      <p class="empty-cart">The cart is empty</p>
+    </ng-container>
+
+
+    <div>
+      <button class="btn btn-pay-wrapper" mat-stroked-button>
+        <span>Buy</span>
+      </button>
+  </div>
+  </div>
+
 </div>

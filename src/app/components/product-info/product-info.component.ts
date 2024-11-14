@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,7 +15,10 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
   productSubscription!: Subscription;
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
     this.productSubscription = this.route.data.subscribe((data) => {
@@ -25,6 +29,9 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
   }
 
 
+  back() {
+    this.location.back();
+  }
 
 
   ngOnDestroy(): void {

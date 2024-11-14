@@ -12,10 +12,10 @@
       <mat-icon class="mx-1">shopping_cart_checkout</mat-icon>
       <span>Cart</span>
     </button>
-    <button mat-button color="primary" routerLinkActive="active-link" routerLink="/about-us">
+    <!-- <button mat-button color="primary" routerLinkActive="active-link" routerLink="/about-us">
       <mat-icon class="mx-1">group</mat-icon>
       <span>About us</span>
-    </button>
+    </button> -->
   </div>
 
   <div class="d-flex d-sm-none">
@@ -28,14 +28,14 @@
           <mat-icon class="mx-1">menu</mat-icon>
           <span>Products</span>
         </button>
-        <button class="d-flex" mat-button color="primary" routerLinkActive="active-link" routerLink="/cart">
-          <mat-icon class="mx-1">shopping_cart_checkout</mat-icon>
+        <button  class="d-flex" mat-button color="primary" routerLinkActive="active-link" routerLink="/cart">
+          <mat-icon matBadge="{{cartLength}}" class="mx-1">shopping_cart_checkout</mat-icon>
           <span>Cart</span>
         </button>
-        <button class="d-flex" mat-button color="primary" routerLinkActive="active-link" routerLink="/about-us">
+        <!-- <button class="d-flex" mat-button color="primary" routerLinkActive="active-link" routerLink="/about-us">
           <mat-icon class="mx-1">group</mat-icon>
           <span>About us</span>
-        </button>
+        </button> -->
 
       </div>
       </mat-menu>

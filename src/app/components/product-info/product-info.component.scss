@@ -1,4 +1,31 @@
+.page-wrapper {
+  position: relative;
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+
+  @media (min-width: 320px) and (max-width: 520px) {
+    padding-top: 55px;
+  }
+
+  height: 100%;
+}
+
+
+.back-btn {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: #b4728d;
+  background-color: #292828;
+}
+
 .card-img {
   object-fit: contain;
   background-color: white;
+  max-width: 450px;
 }

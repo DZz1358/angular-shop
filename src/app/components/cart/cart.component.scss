@@ -1,13 +1,32 @@
+.page-wrapper {
+  position: relative;
+}
+
 .cart-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  padding-top: 15px;
+
+  @media (min-width: 320px) and (max-width: 520px) {
+    padding-top: 55px;
+  }
+
+  height: 100%;
 }
 
 .product-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 320px;
+
+  @media (min-width: 375px) and (max-width: 1024px) {
+    max-width: 520px;
+  }
+
+  @media (min-width: 1025px) {
+    max-width: 620px;
+  }
+
 
   display: flex;
   margin-bottom: 10px;
@@ -37,5 +56,48 @@
 
   &-counter {
     margin: 0 15px;
+
+    @media (min-width: 320px) and (max-width: 520px) {
+      margin: 0 5px;
+    }
   }
+}
+
+.link-product {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    font-size: 16px;
+  }
+}
+
+.empty-cart {
+  margin-top: 30px;
+  font-size: 36px;
+}
+
+.btn-pay-wrapper {
+  border-radius: 12px;
+  padding: 15px;
+  color: #b4728d;
+  background-color: #292828;
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  bottom: 15px;
+  max-width: 320px;
+
+  font-size: 20px;
+}
+
+.back-btn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #b4728d;
+  background-color: #292828;
 }

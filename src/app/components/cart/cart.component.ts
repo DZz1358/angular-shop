@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
@@ -14,6 +15,7 @@ export class CartComponent implements OnInit {
 
 
   constructor(private cartService: CartService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,10 @@ export class CartComponent implements OnInit {
 
   decrement(productId: number) {
     this.cartService.removeFromCart(productId)
+  }
+
+  back() {
+    this.location.back();
   }
 
 

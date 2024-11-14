@@ -1,26 +1,35 @@
-<div class="d-flex mt-5 justify-content-center">
-  <div class="col-3">
-    <img
-      mat-card-image
-      src="{{ product.image }}"
-      alt="Photo"
-      class="card-img px-2"
-    />
-  </div>
-  <div class="col-5 mx-3 px-3">
-    <h1 class="fw-bold">{{ product.title | uppercase }}</h1>
-    <hr>
-    <h3>{{ product.description }}</h3>
-    <hr>
-    <p><b>Price: </b>{{ product.price | currency }}</p>
 
-    <div class="d-flex">
-      <p ><b>Count: </b>{{ product.rating.count }}</p>
-      <p class="mx-2"><b>Rate: </b>{{ product.rating.rate }}</p>
+
+<div class="page-wrapper">
+  <button class="btn back-btn" mat-stroked-button (click)="back()">
+    <span>Back</span>
+  </button>
+
+
+  <div class="cart-wrapper">
+    <div class="col-md-3 col-12">
+      <img
+        mat-card-image
+        src="{{ product.image }}"
+        alt="Photo"
+        class="card-img px-2"
+      />
     </div>
-    <div class="col-12">
-      <button mat-raised-button class="col-3">Basic</button>
-      <button mat-raised-button color="warn" class="col-3 mx-3">Basic</button>
+    <div class="col-md-5 col-12 mx-3 px-3">
+      <h1 class="fw-bold">{{ product.title | uppercase }}</h1>
+      <hr>
+      <h3>{{ product.description }}</h3>
+      <hr>
+      <p><b>Price: </b>{{ product.price | currency }}</p>
+
+      <div class="d-flex">
+        <p ><b>Count: </b>{{ product.rating.count }}</p>
+        <p class="mx-2"><b>Rate: </b>{{ product.rating.rate }}</p>
+      </div>
+      <div class="col-12">
+        <button mat-raised-button class="col-3">Basic</button>
+        <button mat-raised-button color="warn" class="col-3 mx-3">Basic</button>
+      </div>
     </div>
   </div>
 </div>
