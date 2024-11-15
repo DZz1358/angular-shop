@@ -47,7 +47,7 @@
 
     <div *ngIf="cartProducts">
       <button class="btn btn-pay-wrapper" mat-stroked-button>
-        <span>Buy</span>
+        <span>Buy {{totalPrice | currency }}</span>
       </button>
   </div>
   </div>

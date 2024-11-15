@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   cart$!: Observable<any>;
   public cartProducts: any = {}
+  public totalPrice = 0
 
 
   constructor(private cartService: CartService,
@@ -27,7 +28,14 @@ export class CartComponent implements OnInit {
     this.cart$ = this.cartService.getCart();
     this.cart$.subscribe((cart) => {
       this.cartProducts = cart.products
+      if (this.cartProducts) {
+        this.totalPrice = this.cartProducts.reduce((acc: any, curr: any) => acc + (+curr.price * curr.count), 0)
+          .toFixed(2)
+      }
     })
+
+
+
   }
 
 
