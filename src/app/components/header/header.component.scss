@@ -1,4 +1,6 @@
+@import '/src/styles/variables';
+
 .active-link {
-  color: #b4728d;
-  background-color: #292828;
+  color: $secondary-color;
+  background-color: $dark;
 }

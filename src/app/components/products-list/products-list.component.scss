@@ -1,3 +1,5 @@
+@import '/src/styles/variables';
+
 .products-wrapper {
   display: grid;
   justify-items: center;
@@ -43,18 +45,18 @@ mat-card-header {
 }
 
 .product-filter {
-  background-color: #3d3a3a;
+  background-color: $dark-gray;
   padding: 10px 0;
-  color: #c2185b;
+  color: $primary-color;
 }
 
 .btn {
-  color: #b4728d;
-  background-color: #292828;
+  color: $secondary-color;
+  background-color: $dark;
   cursor: pointer;
 
   &:disabled {
-    color: #fc0069;
-    background-color: #fffdfd;
+    color: $primary-color;
+    background-color: $light-gray;
   }
 }
