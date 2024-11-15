@@ -21,7 +21,7 @@
 
 <div class="products-wrapper">
   <mat-card class="product-card d-flex justify-content-between flex-column " *ngFor="let product of filteredProducts">
-    <div>
+    <div class="cursor-pointer" [routerLink]="['/product', product.id]">
       <mat-card-header></mat-card-header>
       <img
         mat-card-image
@@ -36,11 +36,6 @@
       </mat-card-content>
     </div>
 
-    <div>
-      <button mat-stroked-button [routerLink]="['/product', product.id]">
-        Details
-      </button>
-
       <div class="btn-wrapper">
         <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
           <span>-</span>
@@ -52,7 +47,6 @@
         </button>
       </div>
 
-    </div>
 
   </mat-card>
 </div>

@@ -6,6 +6,7 @@
 
 .cart-wrapper {
   padding-top: 15px;
+  padding-bottom: 100px;
 
   @media (min-width: 320px) and (max-width: 926px) {
     padding-top: 55px;
@@ -81,7 +82,6 @@
   text-align: center;
   bottom: 15px;
   max-width: 320px;
-
   font-size: 20px;
 }
 

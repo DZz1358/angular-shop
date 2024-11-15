@@ -1,3 +1,5 @@
+@import '/src/styles/variables';
+
 .page-wrapper {
   position: relative;
 }
@@ -11,4 +13,15 @@
   object-fit: contain;
   background-color: white;
   max-width: 450px;
+}
+
+.btn {
+  color: $secondary-color;
+  background-color: $dark;
+  cursor: pointer;
+
+  &:disabled {
+    color: $primary-color;
+    background-color: $light-gray;
+  }
 }

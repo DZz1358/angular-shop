@@ -26,9 +26,15 @@
         <p ><b>Count: </b>{{ product.rating.count }}</p>
         <p class="mx-2"><b>Rate: </b>{{ product.rating.rate }}</p>
       </div>
-      <div class="col-12">
-        <button mat-raised-button class="col-3">Basic</button>
-        <button mat-raised-button color="warn" class="col-3 mx-3">Basic</button>
+      <div class="btn-wrapper">
+        <button mat-stroked-button class="btn" [disabled]="initCount(product) === 0" (click)="decrement(product.id)">
+          <span>-</span>
+        </button>
+        <span class="btn-wrapper-counter">{{ initCount(product) }}</span>
+
+        <button mat-stroked-button class="btn" (click)="increment(product)">
+          <span>+</span>
+        </button>
       </div>
     </div>
   </div>

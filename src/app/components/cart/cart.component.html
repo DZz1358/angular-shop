@@ -4,7 +4,7 @@
       <span>Back</span>
     </button>
 
-    <button class="btn action-btn clear-btn" mat-stroked-button (click)="clearCart()">
+    <button *ngIf="cartProducts" class="btn action-btn clear-btn" mat-stroked-button (click)="clearCart()">
       Clear cart
     </button>
 
