@@ -17,6 +17,7 @@ export class ProductsListComponent implements OnInit {
   public categoryType = categoryType;
   cart$!: Observable<any>;
   public cart: any = {}
+  public isLoading: boolean = true
 
   productsList!: IProduct[];
   productsSubscription!: Subscription;
@@ -48,6 +49,7 @@ export class ProductsListComponent implements OnInit {
 
     this.productsSubscription = this.productService.getProducts().subscribe((data: IProduct[]) => {
       this.productsList = data;
+      this.isLoading = false
       this.categoryFilter(this.categoryFC.value);
     });
 
