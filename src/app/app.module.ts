@@ -17,7 +17,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
-import { ProductsResolver } from './services/products.resolver';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -54,7 +53,7 @@ import { CartComponent } from './components/cart/cart.component';
     MatMenuModule,
     MatBadgeModule
   ],
-  providers: [ProductsResolver, ProductsService],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

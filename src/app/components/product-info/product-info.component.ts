@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { IProduct } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-info',
@@ -16,21 +17,26 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
   productSubscription!: Subscription;
   cart$!: Observable<any>;
   public cart: any = {}
+  public isLoading: boolean = true
+
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private cartService: CartService,
+    private productService: ProductsService,
 
   ) { }
 
   ngOnInit(): void {
     this.loadCart();
-
-    this.productSubscription = this.route.data.subscribe((data) => {
-      this.product = data['data'];
-    })
-
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id')!;
+      this.productSubscription = this.productService.getProduct(id).subscribe((product: any) => {
+        this.product = product;
+        this.isLoading = false
+      })
+    });
   }
 
   private loadCart() {

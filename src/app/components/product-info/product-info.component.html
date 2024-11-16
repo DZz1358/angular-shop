@@ -6,8 +6,8 @@
   </button>
 
 
-  <div class="cart-wrapper d-flex justify-content-center align-items-center flex-wrap">
-    <div>
+  <div *ngIf="!isLoading" class="cart-wrapper d-flex justify-content-center align-items-center flex-wrap">
+    <div class="mb-5">
       <img
         mat-card-image
         src="{{ product.image }}"
@@ -38,4 +38,10 @@
       </div>
     </div>
   </div>
+
+
+  <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <span class="loader"></span>
+  </div>
+
 </div>
