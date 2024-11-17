@@ -23,4 +23,9 @@ export class ProductsService {
     return this.http.post(`${this.apiUrl}`, data);
   }
 
+
+  getProductByCategory(category: string) {
+    return this.http.get(`${this.apiUrl}/category/${category}`)
+  }
+
 }

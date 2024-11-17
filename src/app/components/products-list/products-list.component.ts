@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, UntypedFormControl } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { debounce, debounceTime, Observable, Subscription, tap } from 'rxjs';
 import { categoryType } from 'src/app/constants/category-product-type.constants';
 import { IProduct } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart.service';
@@ -81,7 +81,10 @@ export class ProductsListComponent implements OnInit {
     if (categoryName === 'All') {
       this.filteredProducts = this.productsList;
     } else {
-      this.filteredProducts = this.productsList.filter(item => item.category === categoryName);
+      this.productService.getProductByCategory(categoryName)
+        .subscribe((data: any) => {
+          this.filteredProducts = data;
+        });
     }
   }
 
@@ -106,6 +109,5 @@ export class ProductsListComponent implements OnInit {
   ngOnDestroy() {
     if (this.productsSubscription) this.productsSubscription.unsubscribe();
   }
-
 
 }
