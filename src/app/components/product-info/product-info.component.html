@@ -7,7 +7,7 @@
 
 
   <div *ngIf="!isLoading" class="cart-wrapper d-flex justify-content-center align-items-center flex-wrap">
-    <div class="mb-5">
+    <div class="mb-5 mt-3">
       <img
         mat-card-image
         src="{{ product.image }}"
@@ -15,11 +15,11 @@
         class="card-img px-2 col-md-3 col-12"
       />
     </div>
+
     <div class="col-md-5 col-12 mx-3 px-3">
       <h1 class="fw-bold">{{ product.title | uppercase }}</h1>
       <hr>
-      <h3>{{ product.description }}</h3>
-      <hr>
+
       <p><b>Price: </b>{{ product.price | currency }}</p>
 
       <div class="d-flex">
@@ -36,6 +36,9 @@
           <span>+</span>
         </button>
       </div>
+
+      <hr>
+      <h3>{{ product.description }}</h3>
     </div>
   </div>
 
